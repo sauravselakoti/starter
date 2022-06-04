@@ -2,6 +2,7 @@ package udemyLearning.starter.domain;
 
 import jakarta.persistence.*;
 
+import java.util.HashSet;
 import java.util.Set;
 @Entity
 public class Author {
@@ -11,16 +12,15 @@ public class Author {
     private Long id;
     private String firstname;
     private String lastName;
-    @ManyToMany(mappedBy = 'authors')
-    private Set<Book> books;
+    @ManyToMany(mappedBy = "authors")
+    private Set<Book> books=new HashSet<>();
 
     public Author() {
     }
 
-    public Author(String firstname, String lastName, Set<Book> books) {
+    public Author(String firstname, String lastName) {
         this.firstname = firstname;
         this.lastName = lastName;
-        this.books = books;
     }
 
     public Long getId() {
